@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="ogani-master/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="ogani-master/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="ogani-master/css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/css.css">
 </head>
 
 <body>
@@ -103,6 +104,7 @@
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                <span class="light" id="darkmode">Dark</span>
                             </div>
                             <div class="header__top__right__language">
                                 <img src="ogani-master/img/language.png" alt="">
@@ -159,7 +161,19 @@
 	
 		<tiles:insertAttribute name="body"/>
 
-    
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/63bd6d55c2f1ac1e202cb159/1gmdv669s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
     <!-- body end -->
     <!-- Hero Section Begin -->
 
@@ -178,7 +192,31 @@
     <script src="ogani-master/js/mixitup.min.js"></script>
     <script src="ogani-master/js/owl.carousel.min.js"></script>
     <script src="ogani-master/js/main.js"></script>
+    <script>
+        document.querySelector('#darkmode').addEventListener("click", function(e) {
+            // console.log(e.target.textContent);
+            // e.target.setAttribute("class","dark");
+            // console.log(e.target);
+            // e.target.textContent = 'Light';
 
+            if(e.target.getAttribute("class") == "dark") {
+                e.target.setAttribute("class", "light");
+                document.querySelector('body').setAttribute("id","dark");
+                e.target.textContent = "Dark";
+            }
+            else if (e.target.getAttribute("class") == "light") {
+                e.target.setAttribute("class", "dark");
+                document.querySelector('body').setAttribute("id","white");
+                e.target.textContent = "Light";
+            }
+
+        })
+
+        // document.querySelector('.darkON').addEventListener("click", function(e) {
+        //     e.target.setAttribute("class","dark");
+        //     e.target.textContent = 'Dark';
+        // })
+    </script>
 
 
 </body>
