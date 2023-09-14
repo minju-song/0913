@@ -55,6 +55,10 @@
 										  <img src="img/kakao_login.png" width="100" margin = "0 auto"
 										    alt="카카오 로그인 버튼" />
 										</a>
+										<a id="kakao-login-btn2" href="javascript:loginWithKakao2()">
+										  <img src="img/kakao_login.png" width="100" margin = "0 auto"
+										    alt="카카오 로그인 버튼" />
+										</a>
                                         <a href="#" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
@@ -99,6 +103,12 @@
         window.Kakao.init('9c1eb3ec967ca14a10ddab8621bdddef'); // 사용하려는 앱의 JavaScript 키 입력
     </script>
     <script>
+    function loginWithKakao2 () {
+    	window.Kakao.Auth.authorize({
+    		redirectUri: 'http://localhost/prj',
+            prompt: 'select_account',
+    	})
+    }
     function loginWithKakao() {
         
         
@@ -126,18 +136,21 @@
                 scope: 'profile_nickname, account_email, birthday', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
                 success: function(response) {
                     console.log(response);
+                    console.log(response.access_token);
+                    Kakao.Auth.setAccessToken(response.access_token);
                   // 로그인 성공하면 받아오는 데이터
                     window.Kakao.API.request({ // 사용자 정보 가져오기 
                         url: '/v2/user/me',
                         success: (res) => {
                             const kakao_account = res.kakao_account;
+                            alert(kakao_account.profile.nickname+"님 환영합니다");
                             console.log(kakao_account);
                             console.log(kakao_account.profile.nickname);
                             console.log(kakao_account.birthday);
                             console.log(kakao_account.email);
                         }
                     });
-                    // window.location.href='http://localhost/prj' //리다이렉트 되는 코드
+                     //window.location.href='http://localhost/prj' //리다이렉트 되는 코드
                 },
                 fail: function(error) {
                     console.log(error);
