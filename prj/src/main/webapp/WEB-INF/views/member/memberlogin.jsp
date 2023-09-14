@@ -137,7 +137,7 @@
                             console.log(kakao_account.email);
                         }
                     });
-                    // window.location.href='http://127.0.0.1/prj' //리다이렉트 되는 코드
+                    // window.location.href='http://localhost/prj' //리다이렉트 되는 코드
                 },
                 fail: function(error) {
                     console.log(error);
